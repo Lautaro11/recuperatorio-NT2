@@ -33,7 +33,7 @@
         preguntas: [
           { numero: 1, respuestas: ['b,d']},
           { numero: 2, respuestas: ['c']},
-          { numero: 3, respuestas: ['b,e']},
+          { numero: 3, respuestas: ['b']},
         ],
       }
     },
