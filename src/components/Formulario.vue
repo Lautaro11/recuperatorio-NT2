@@ -2,6 +2,12 @@
 
  <div class="container-sm">
 
+    <!-- INPUT PRESUPUESTO -->
+    <label for="presupuesto" class="form-label">Presupuesto</label>
+    <input type="number" name="presupuesto" id="presupuesto" class="form-control" v-model.number="presupuesto" required :min="importeMin">
+
+
+
   <vue-form :state="formstate" @submit.prevent="onSubmit">
 
         <!-- INPUT NAME -->
@@ -74,7 +80,7 @@
         <td>{{gasto.fecha}}</td>
       </tr>
       <tr>
-        <td :class="{green: gastoTotal < 1000, magenta: gastoTotal >= 1000 && gastoTotal <= 5000, orange: gastoTotal > 5000}"  colspan="4">Gasto total: ${{gastoTotal}}</td>
+        <td :class="{green: gastoTotal < 1000, magenta: gastoTotal >= 1000 && gastoTotal <= 5000, orange: gastoTotal > 5000, red: gastoTotal > presupuesto}"  colspan="4">Gasto total: ${{gastoTotal}}</td>
       </tr>
     </tbody>
   </table>
@@ -95,6 +101,7 @@
     data () {
       return {
         formstate: {},
+        presupuesto: 0,
         data: {
           name: '',
           description: '',
@@ -144,6 +151,8 @@
             importe: ''
           }
 
+          console.log(this.presupuesto);
+
           this.formstate._reset();
        }
     },
@@ -175,6 +184,10 @@
 
   .orange {
     color: orange;
+  }
+
+  .red {
+    color: red;
   }
 
 </style>
